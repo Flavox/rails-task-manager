@@ -1,0 +1,10 @@
+<% def check_icone(checked) %>
+  <%= checked ? raw('<i class="fa-regular fa-square-check"></i>') : raw('<i class="fa-regular fa-square"></i>') %>
+<% end %>
+
+<h1>Détails de <%= @task.title %></h1>
+<%= check_icone(@task.completed) %></i>
+<%= @task.details %> <br>
+<%= link_to "🖌 Editer", edit_task_path %> <br>
+<%= link_to "🚮 Supprimer", task_path(@task), data: {turbo_method: :delete, turbo_confirm: "T'es sur ?"} %><br>
+<%= link_to "⏪ Go back", tasks_path %>

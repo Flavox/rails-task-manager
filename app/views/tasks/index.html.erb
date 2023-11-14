@@ -1,0 +1,19 @@
+<% def check_icone(checked) %>
+  <%= checked ? raw('<i class="fa-regular fa-square-check"></i>') : raw('<i class="fa-regular fa-square"></i>') %>
+<% end %>
+
+<h1>Tes tâches !</h1>
+
+<% @tasks.each do |task| %>
+<li>
+  <p>
+    <%# <i class="fa-regular fa-square-check"><%= task.completed %>
+    <%= check_icone(task.completed) %>
+    <%= link_to task.title, task_path(task) %>
+    <%= link_to "🖌 Editer", edit_task_path(task) %>
+    <%= link_to "🚮 Supprimer", task_path(task), data: {turbo_method: :delete, turbo_confirm: "T'es sur ?"} %> <br>
+  </p>
+</li>
+<% end %>
+
+<%= link_to "➕ Ajouter une nouvelle tâche", new_task_path %>
